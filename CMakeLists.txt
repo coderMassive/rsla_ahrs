@@ -15,6 +15,8 @@ find_package(ament_cmake REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 
 target_compile_options(VnSensor PRIVATE
 -Wno-format-overflow
@@ -29,7 +31,7 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(rsla_ahrs src/main.cpp)
-ament_target_dependencies(rsla_ahrs rclcpp std_msgs geometry_msgs)
+ament_target_dependencies(rsla_ahrs rclcpp std_msgs geometry_msgs tf2 tf2_geometry_msgs)
 
 target_link_libraries(rsla_ahrs VnSensor)
 
